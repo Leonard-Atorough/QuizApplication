@@ -107,5 +107,22 @@ namespace QuizApplicationBusinessLayer
                 db.SaveChanges();
             }
         }
+
+        //LOGIN FUNCTIONS
+        public void LoginTeacher(string userName, string password)
+        {
+            using (var db = new QuizBucketContext())
+            {
+                var account =
+                    from teacher in db.Teachers
+                    where teacher.TeacherName == userName && teacher.TeacherPassword == password
+                    select teacher;
+
+                foreach (var teacher in account)
+                {
+                    Console.WriteLine(teacher.ToString());
+                }
+            }
+        }
     }
 }

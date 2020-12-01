@@ -1,0 +1,36 @@
+﻿<Page x:Class="QuizApplicationGUI.Pages.HomePage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:QuizApplicationGUI"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="HomePage" Background="Teal">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition Height="100" />
+            <RowDefinition Height="100"/>
+        </Grid.RowDefinitions>
+        <Border Grid.Column="1" Grid.Row="2" CornerRadius="2" BorderThickness="5" BorderBrush="Black">
+            <Button Content="Student" Grid.Column="1" HorizontalAlignment="Stretch" Margin="0" Grid.Row="1" VerticalAlignment="Stretch" FontSize="36" Background="White"/>
+        </Border>
+        
+        <Border Grid.Column="3" Grid.Row="2" CornerRadius="2" BorderThickness="5" BorderBrush="Black">
+            <Button Content="Teacher" Grid.Column="3" HorizontalAlignment="Stretch" Margin="0" Grid.Row="1" VerticalAlignment="Stretch" FontSize="36" Background="White"/>
+        </Border>
+        <TextBlock Grid.ColumnSpan="3" Grid.Column="1" HorizontalAlignment="Stretch" Margin="5" Grid.Row="1" Text="User is a:" TextWrapping="Wrap" VerticalAlignment="Stretch" FontSize="56" TextAlignment="Center" Background="White"/>
+
+    </Grid>
+</Page>
