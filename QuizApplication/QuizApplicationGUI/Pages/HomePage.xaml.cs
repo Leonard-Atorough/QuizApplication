@@ -22,5 +22,17 @@ namespace QuizApplicationGUI.Pages
         {
             InitializeComponent();
         }
+
+        private void Teacher_Button_Click(object sender, RoutedEventArgs e)
+        {
+            TeacherLogin teacherLogin = new TeacherLogin();
+            this.NavigationService.Navigate(teacherLogin);
+        }
+
+        private void Student_Button_Click(object sender, RoutedEventArgs e)
+        {
+            StudentLogin studentLogin = new StudentLogin();
+            this.NavigationService.Navigate(studentLogin);
+        }
     }
 }

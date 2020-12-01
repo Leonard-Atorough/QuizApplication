@@ -6,9 +6,12 @@
       xmlns:local="clr-namespace:QuizApplicationGUI"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="HomePage" Background="Teal">
+      Title="HomePage" >
 
     <Grid>
+        <Grid.Background >
+            <ImageBrush ImageSource="Background.png" Opacity="0.25"/>
+        </Grid.Background>
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
             <ColumnDefinition/>
@@ -24,13 +27,13 @@
             <RowDefinition Height="100"/>
         </Grid.RowDefinitions>
         <Border Grid.Column="1" Grid.Row="2" CornerRadius="2" BorderThickness="5" BorderBrush="Black">
-            <Button Content="Student" Grid.Column="1" HorizontalAlignment="Stretch" Margin="0" Grid.Row="1" VerticalAlignment="Stretch" FontSize="36" Background="White"/>
+            <Button Content="Student" Grid.Column="1" HorizontalAlignment="Stretch" Margin="0" Grid.Row="1" VerticalAlignment="Stretch" FontSize="36" Background="White" Click="Student_Button_Click"/>
         </Border>
         
         <Border Grid.Column="3" Grid.Row="2" CornerRadius="2" BorderThickness="5" BorderBrush="Black">
-            <Button Content="Teacher" Grid.Column="3" HorizontalAlignment="Stretch" Margin="0" Grid.Row="1" VerticalAlignment="Stretch" FontSize="36" Background="White"/>
+            <Button Content="Teacher" Grid.Column="3" HorizontalAlignment="Stretch" Margin="0" Grid.Row="1" VerticalAlignment="Stretch" FontSize="36" Background="White" Click="Teacher_Button_Click"/>
         </Border>
-        <TextBlock Grid.ColumnSpan="3" Grid.Column="1" HorizontalAlignment="Stretch" Margin="5" Grid.Row="1" Text="User is a:" TextWrapping="Wrap" VerticalAlignment="Stretch" FontSize="56" TextAlignment="Center" Background="White"/>
+        <TextBlock Grid.ColumnSpan="3" Grid.Column="1" HorizontalAlignment="Stretch" Margin="5" Grid.Row="1" Text="User is a:" TextWrapping="Wrap" VerticalAlignment="Stretch" FontSize="56" TextAlignment="Center"/>
 
     </Grid>
 </Page>

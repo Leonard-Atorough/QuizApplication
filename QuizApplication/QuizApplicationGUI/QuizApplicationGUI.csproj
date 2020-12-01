@@ -7,8 +7,16 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Pages\Background.png" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\QuizApplicationBusinessLayer\QuizApplicationBusinessLayer.csproj" />
     <ProjectReference Include="..\QuizApplicationModel\QuizApplicationModel.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Pages\Background.png" />
   </ItemGroup>
 
 </Project>
