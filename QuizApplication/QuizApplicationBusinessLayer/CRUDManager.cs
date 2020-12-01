@@ -46,6 +46,50 @@ namespace QuizApplicationBusinessLayer
         }
 
 
+        // CREATE FUNCTIONS
 
+        public void CreateTeacherAccount(string name, string password, string email)
+        {
+            using (var db = new QuizBucketContext())
+            {
+                var newAccount = new Teacher
+                {
+                    TeacherName = name,
+                    TeacherPassword = password,
+                    TeacherEmail = email
+                };
+
+                db.Teachers.Add(newAccount);
+                db.SaveChanges();
+            }
+        }
+
+        public void CreateQuestion(string question)
+        {
+            using (var db = new QuizBucketContext())
+            {
+                var newQuestion = new Question
+                {
+                    Question1 = question
+                };
+
+                db.Questions.Add(newQuestion);
+                db.SaveChanges();
+            }
+        }
+
+        public void CreateQuiz(string quizName)
+        {
+            using (var db = new QuizBucketContext())
+            {
+                var newQuiz = new Quiz
+                {
+                    QuizName = quizName
+                };
+
+                db.Quizzes.Add(newQuiz);
+                db.SaveChanges();
+            }
+        }
     }
 }
