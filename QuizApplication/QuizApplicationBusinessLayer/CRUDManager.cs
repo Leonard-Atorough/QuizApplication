@@ -64,6 +64,22 @@ namespace QuizApplicationBusinessLayer
             }
         }
 
+        public void CreateStudentAccount(string name, string password, string email)
+        {
+            using (var db = new QuizBucketContext())
+            {
+                var newAccount = new Student
+                {
+                    StudentName = name,
+                    StudentPassword = password,
+                    StudentEmail = email
+                };
+
+                db.Students.Add(newAccount);
+                db.SaveChanges();
+            }
+        }
+
         public void CreateQuestion(string question)
         {
             using (var db = new QuizBucketContext())
