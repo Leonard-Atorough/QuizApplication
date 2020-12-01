@@ -38,7 +38,7 @@ The application will be defined as done when the minimum viable product, as laid
 
 By the end of this sprint I aimed to have a three tier application structured with a business layer, a model layer and a basic GUI. At this point I wanted to have the foundations laid down without implementing any CRUD functionality between the business and GUI layers.
 
-![](C:\QuizApplication\Kanban pictures\SprintOne start.PNG)
+![](Kanban pictures\SprintOne start.PNG)
 
 
 
@@ -60,7 +60,7 @@ The database was completed and displayed as expected. The structure of the datab
 
 A key aim to improve productivity is the overall clarity of user stories. As visible in the two images attached to the sprint, certain acceptance criteria were edited at the end of the sprint. In the future, changes to acceptance criteria will be made before the commencement of that sprint.
 
-![](C:\QuizApplication\Kanban pictures\SprintOne end.PNG)
+![](Kanban pictures\SprintOne end.PNG)
 
 ---
 
