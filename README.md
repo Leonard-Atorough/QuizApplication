@@ -70,8 +70,29 @@ A key aim to improve productivity is the overall clarity of user stories. As vis
 
 ---
 
+By the end of the second sprint the goal was to have implemented the login and signup functionality for teachers comprehensively so that teachers could create accounts (but not duplicates), and login to their accounts if they existed on the database. Additionally, a further goal was to give the teacher the ability to view a list of their students.
+
+![](https://raw.githubusercontent.com/Leonard-Atorough/QuizApplication/Dev/Kanban%20pictures/SprintTwo%20start.PNG)
+
 #### Sprint Goals
+
+- [x] Complete user story 0.4
+- [x] Complete user story 1.1
+- [x] Complete user story  1.2
+- [x] Complete user story 2.1
+- [x] Complete user story 2.2
+- [x] Used methods tested
+- [x] Complete sprint documentation
+- [x] Complete sprint retrospective
+- [x] Update README
+- [x] Push changes to remote repo
 
 #### Sprint Review
 
+The goals of the sprint were met as expected with the only blocker being the implementation of instance based pages once the teacher had logged in. However, after much research the function allowing the teacher to view a list of his own students was successfully implemented. Additionally, improving the GUI was an unplanned by beneficial activity which helped improve the quality of the product at sprint end.
+
 #### Sprint Retrospective
+
+A major takeaway from this sprint would be the current lack of rudimentary unit testing to back up the implemented functionality. Although manual testing has proven sufficient so far it has been clear that unit testing would have alleviated (or at the very least added clarity) to some issues faced in the later stages of the sprint. In the future basic unit tests will be implemented to ensure that issues in the product are not being generated at the business layer.
+
+![](https://raw.githubusercontent.com/Leonard-Atorough/QuizApplication/Dev/Kanban%20pictures/SprintTwo%20end.PNG)
