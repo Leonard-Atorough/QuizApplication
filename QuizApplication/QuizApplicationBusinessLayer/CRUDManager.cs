@@ -52,15 +52,19 @@ namespace QuizApplicationBusinessLayer
         {
             using (var db = new QuizBucketContext())
             {
-                var newAccount = new Teacher
-                {
-                    TeacherName = name,
-                    TeacherPassword = password,
-                    TeacherEmail = email
-                };
+                var accountExists = db.Teachers.Where(c => c.TeacherName == name).SingleOrDefault();
 
-                db.Teachers.Add(newAccount);
-                db.SaveChanges();
+                if (!db.Teachers.Contains(accountExists))
+                {
+                    var newAccount = new Teacher
+                    {
+                        TeacherName = name,
+                        TeacherPassword = password,
+                        TeacherEmail = email
+                    };
+                    db.Teachers.Add(newAccount);
+                    db.SaveChanges();
+                } 
             }
         }
 
@@ -109,18 +113,21 @@ namespace QuizApplicationBusinessLayer
         }
 
         //LOGIN FUNCTIONS
-        public void LoginTeacher(string userName, string password)
+        public void TeacherLogin(string userName, string password)
         {
             using (var db = new QuizBucketContext())
             {
-                var account =
-                    from teacher in db.Teachers
-                    where teacher.TeacherName == userName && teacher.TeacherPassword == password
-                    select teacher;
-
-                foreach (var teacher in account)
+                var accountExists = db.Teachers.Where(c => c.TeacherName == userName).SingleOrDefault();
+                if (db.Teachers.Contains(accountExists))
                 {
-                    Console.WriteLine(teacher.ToString());
+                    var account =
+                    (from teacher in db.Teachers
+                    where teacher.TeacherName == userName && teacher.TeacherPassword == password
+                    select teacher).ToList();
+                }
+                else
+                {
+                    throw new ArgumentException("User does not exist!");
                 }
             }
         }
