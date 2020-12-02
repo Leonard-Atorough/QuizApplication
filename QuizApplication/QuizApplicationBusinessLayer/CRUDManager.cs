@@ -29,6 +29,27 @@ namespace QuizApplicationBusinessLayer
             }
         }
 
+        public List<Student> ListAssignedStudents(string teacherName)
+        {
+            using (var db = new QuizBucketContext())
+            {
+                var myStudents =
+                    from teacher in db.Teachers
+                    join StudentTeacher in db.StudentTeachers on teacher.TeacherId equals StudentTeacher.TeacherId
+                    join student in db.Students on StudentTeacher.StudentId equals student.StudentId
+                    where teacher.TeacherName == teacherName
+                    select student;
+
+                List<Student> selectStudents = new List<Student>();
+                foreach (var s in myStudents)
+                {
+                    selectStudents.Add(s);
+                }
+
+                return selectStudents;
+            }
+        }
+
         public List<Question> ListAllQuestions()
         {
             using (var db = new QuizBucketContext())
@@ -56,15 +77,26 @@ namespace QuizApplicationBusinessLayer
 
                 if (!db.Teachers.Contains(accountExists))
                 {
-                    var newAccount = new Teacher
+                    if (password.Length > 0 && email.Length > 0)
                     {
-                        TeacherName = name,
-                        TeacherPassword = password,
-                        TeacherEmail = email
-                    };
-                    db.Teachers.Add(newAccount);
-                    db.SaveChanges();
-                } 
+                        var newAccount = new Teacher
+                        {
+                            TeacherName = name.Trim(),
+                            TeacherPassword = password.Trim(),
+                            TeacherEmail = email.Trim()
+                        };
+                        db.Teachers.Add(newAccount);
+                        db.SaveChanges();
+                    }
+                    else
+                    {
+                        throw new ArgumentException("You have not inputted a password and/or email");
+                    }    
+                }
+                else
+                {
+                    throw new ArgumentException("Account already exists!");
+                }
             }
         }
 

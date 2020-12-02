@@ -41,7 +41,7 @@ namespace QuizApplicationGUI.Pages
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.Message);
+                ErrorBox.Text = ex.Message;
             }
         }
 
@@ -49,10 +49,12 @@ namespace QuizApplicationGUI.Pages
         {
             var username = UsernameTextBox.Text;
             var password = PasswordTextBox.Text;
+            Application.Current.Properties["username"] = username;
 
             try
             {
                 _crudManager.TeacherLogin(username, password);
+                
                 this.NavigationService.Navigate(teacherMain);
             }
             catch (Exception ex)
