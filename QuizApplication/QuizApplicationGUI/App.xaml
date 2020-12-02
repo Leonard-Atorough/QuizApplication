@@ -4,6 +4,46 @@
              xmlns:local="clr-namespace:QuizApplicationGUI"
              StartupUri="Pages/HomePage.xaml">
     <Application.Resources>
-         
+         <!-- Button style -->
+        <Style x:Key="ButtonStyle" TargetType="{x:Type Button}">
+            <Setter Property="Background" Value="White"/>
+            <Setter Property="BorderBrush" Value="{x:Null}"/>
+            <Setter Property="FontFamily" Value="Tahoma" />
+            <Setter Property="BorderBrush" Value="{x:Null}" />
+            <Setter Property="FontWeight" Value="SemiBold" />
+        </Style>
+        
+        <!-- TextBlock style-->
+        <Style x:Key="BoxStyle" TargetType="{x:Type TextBlock}">
+            <Setter Property="FontSize" Value="24"/>
+            <Setter Property="Background" Value="{x:Null}"/>
+            <Setter Property="FontFamily" Value="Tahoma" />
+            <Setter Property="TextAlignment" Value="Center" />
+        </Style>
+        
+        <!-- Border style-->
+        <Style x:Key="BorderStyle1" TargetType="{x:Type Border}">
+            <Setter Property="BorderThickness" Value="5"/>
+            <Setter Property="BorderBrush" Value="Black"/>
+            <Setter Property="CornerRadius" Value="10,0,0,10"/>
+            <Setter Property="Margin" Value="10,10,2,10" />
+        </Style>
+        
+        <!-- Border Style 2-->
+        <Style x:Key="BorderStyle2" TargetType="{x:Type Border}">
+            <Setter Property="BorderThickness" Value="5"/>
+            <Setter Property="BorderBrush" Value="Black"/>
+            <Setter Property="CornerRadius" Value="0,10,10,0"/>
+            <Setter Property="Margin" Value="2,10,10,10" />
+        </Style>
+        
+        <!-- Border style 3-->
+        <Style x:Key="BorderStyle3" TargetType="{x:Type Border}">
+            <Setter Property="BorderThickness" Value="5"/>
+            <Setter Property="BorderBrush" Value="Black"/>
+            <Setter Property="CornerRadius" Value="10"/>
+            <Setter Property="Margin" Value="10" />
+            
+        </Style>
     </Application.Resources>
 </Application>

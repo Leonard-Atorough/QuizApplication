@@ -54,7 +54,7 @@ namespace QuizApplicationGUI.Pages
             try
             {
                 _crudManager.TeacherLogin(username, password);
-                
+                TeacherMain teacherMain = new TeacherMain(username);
                 this.NavigationService.Navigate(teacherMain);
             }
             catch (Exception ex)

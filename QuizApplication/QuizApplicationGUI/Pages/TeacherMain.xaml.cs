@@ -21,11 +21,18 @@ namespace QuizApplicationGUI.Pages
     public partial class TeacherMain : Page
     {
         CRUDManager _crudManager = new CRUDManager();
+        string username;
         public TeacherMain()
         {
             InitializeComponent();
             ListAllStudents();
-            ListAssignedStudents();
+            
+        }
+
+        public TeacherMain(string userFromLogin):this()
+        {
+            username = userFromLogin;
+            ListAssignedStudents(username);
         }
 
         private void ListAllStudents()
@@ -33,9 +40,8 @@ namespace QuizApplicationGUI.Pages
             AllStudentsBox.ItemsSource = _crudManager.ListAllStudents();
         }
 
-        private void ListAssignedStudents()
+        private void ListAssignedStudents(string username)
         {
-            string username = (string)Application.Current.Properties["username"];
             AssignedStudentsBox.ItemsSource = _crudManager.ListAssignedStudents(username);
         }
     }

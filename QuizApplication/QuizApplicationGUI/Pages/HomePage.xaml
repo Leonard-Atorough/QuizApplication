@@ -21,19 +21,21 @@
         </Grid.ColumnDefinitions>
         
         <Grid.RowDefinitions>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition Height="100" />
-            <RowDefinition Height="100"/>
+            <RowDefinition Height="200"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
-        <Border Grid.Column="1" Grid.Row="2" CornerRadius="2" BorderThickness="5" BorderBrush="Black">
-            <Button Content="Student" Grid.Column="1" HorizontalAlignment="Stretch" Margin="0" Grid.Row="1" VerticalAlignment="Stretch" FontSize="36" Background="White" Click="Student_Button_Click"/>
+        <Border Grid.Column="1" Grid.Row="2" Style="{StaticResource BorderStyle3}">
+            <Button Content="Student" Grid.Column="1" Grid.Row="1" FontSize="28" Style="{StaticResource ButtonStyle}" Click="Student_Button_Click"/>
         </Border>
-        
-        <Border Grid.Column="3" Grid.Row="2" CornerRadius="2" BorderThickness="5" BorderBrush="Black">
-            <Button Content="Teacher" Grid.Column="3" HorizontalAlignment="Stretch" Margin="0" Grid.Row="1" VerticalAlignment="Stretch" FontSize="36" Background="White" Click="Teacher_Button_Click"/>
+
+        <Border Grid.Column="3" Grid.Row="2" Style="{StaticResource BorderStyle3}">
+            <Button Content="Teacher" Grid.Column="3" Grid.Row="1" FontSize="28" Style="{StaticResource ButtonStyle}" Click="Teacher_Button_Click"/>
         </Border>
-        <TextBlock Grid.ColumnSpan="3" Grid.Column="1" HorizontalAlignment="Stretch" Margin="5" Grid.Row="1" Text="User is a:" TextWrapping="Wrap" VerticalAlignment="Stretch" FontSize="56" TextAlignment="Center"/>
+
+        <TextBlock Grid.ColumnSpan="5" Grid.Column="0" HorizontalAlignment="Center" Margin="5" Grid.Row="0" Text="Welcome to the QuizBucket Quiz App" TextWrapping="Wrap" VerticalAlignment="Center" FontSize="56" TextAlignment="Center" FontFamily="Tahoma"/>
+
+        <TextBlock Grid.ColumnSpan="5" Grid.Column="0" HorizontalAlignment="Center" Margin="10" Grid.Row="1" Text="Please select account type:" TextWrapping="Wrap" VerticalAlignment="Center" FontSize="56" TextAlignment="Center" FontFamily="Tahoma"/>
 
     </Grid>
 </Page>
