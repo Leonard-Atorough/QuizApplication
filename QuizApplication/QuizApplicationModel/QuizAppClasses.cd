@@ -1,0 +1,56 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="NameAndType">
+  <Class Name="QuizApplicationModel.Teacher">
+    <Position X="7.25" Y="4.25" Width="3.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAEAAACAAAIAAAAgAEAAAAAgAAAAA=</HashCode>
+      <FileName>Teacher.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="QuizApplicationModel.StudentTeacher">
+    <Position X="5.25" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEAAAAAQAAAAAAAAAAACAAAAAAAAAAAAAAAAAACAAA=</HashCode>
+      <FileName>StudentTeacher.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="QuizApplicationModel.Student">
+    <Position X="7.25" Y="0.5" Width="3.75" />
+    <TypeIdentifier>
+      <HashCode>ACAABAIAAAAAAAAAAAAAAAIAAAACAgCgAAAAAAACAAA=</HashCode>
+      <FileName>Student.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="QuizApplicationModel.Question">
+    <Position X="3.25" Y="4.75" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAEAAAAAAAAAAAAAAAAACAAAIAAAAAAEAAAAAAQAAAA=</HashCode>
+      <FileName>Question.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="QuizApplicationModel.Quiz">
+    <Position X="1" Y="5" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Properties" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AABAAAAAAAAAAAAAAAAAAAAAIAAAAAAEAAAAAAAAAAA=</HashCode>
+      <FileName>Quiz.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="QuizApplicationModel.StudentQuiz">
+    <Position X="3.25" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAQAAAAAgAAAAAAAAAIAAAAAAAAAAAAAQCAAA=</HashCode>
+      <FileName>StudentQuiz.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="QuizApplicationModel.StudentAnswer">
+    <Position X="1" Y="0.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAEAAAAAgQCAAA=</HashCode>
+      <FileName>StudentAnswer.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
