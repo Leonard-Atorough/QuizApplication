@@ -21,7 +21,7 @@ namespace QuizApplicationGUI.Pages
     public partial class TeacherLogin : Page
     {
         CRUDManager _crudManager = new CRUDManager();
-        TeacherMain teacherMain = new TeacherMain();
+        //TeacherMain teacherMain = new TeacherMain();
 
         public TeacherLogin()
         {
@@ -37,6 +37,8 @@ namespace QuizApplicationGUI.Pages
             try
             {
                 _crudManager.CreateTeacherAccount(username, password, email);
+                ErrorBox.Text.Remove(0);
+                TeacherMain teacherMain = new TeacherMain(username);
                 this.NavigationService.Navigate(teacherMain);
             }
             catch (Exception ex)
@@ -49,10 +51,14 @@ namespace QuizApplicationGUI.Pages
         {
             var username = UsernameTextBox.Text;
             var password = PasswordTextBox.Text;
-            Application.Current.Properties["username"] = username;
+            //Application.Current.Properties["username"] = username;
 
             try
             {
+                if (ErrorBox.Text.Length > 0)
+                {
+                    ErrorBox.Text.Remove(0);
+                }
                 _crudManager.TeacherLogin(username, password);
                 TeacherMain teacherMain = new TeacherMain(username);
                 this.NavigationService.Navigate(teacherMain);

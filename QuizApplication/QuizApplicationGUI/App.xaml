@@ -6,11 +6,10 @@
     <Application.Resources>
          <!-- Button style -->
         <Style x:Key="ButtonStyle" TargetType="{x:Type Button}">
-            <Setter Property="Background" Value="White"/>
+            <Setter Property="Background" Value="{x:Null}"/>
             <Setter Property="BorderBrush" Value="{x:Null}"/>
             <Setter Property="FontFamily" Value="Tahoma" />
-            <Setter Property="BorderBrush" Value="{x:Null}" />
-            <Setter Property="FontWeight" Value="SemiBold" />
+            <Setter Property="FontWeight" Value="DemiBold" />
         </Style>
         
         <!-- TextBlock style-->
@@ -21,6 +20,14 @@
             <Setter Property="TextAlignment" Value="Center" />
         </Style>
         
+        <!-- TextBox style-->
+        <Style x:Key="TextBoxStyle" TargetType="{x:Type TextBox}">
+            <Setter Property="FontSize" Value="24"/>
+            <Setter Property="Background" Value="{x:Null}" />
+            <Setter Property="FontFamily" Value="Tahoma" />
+            <Setter Property="TextAlignment" Value="Left" />
+            <Setter Property="BorderBrush" Value="{x:Null}" />
+        </Style>
         <!-- Border style-->
         <Style x:Key="BorderStyle1" TargetType="{x:Type Border}">
             <Setter Property="BorderThickness" Value="5"/>
@@ -42,8 +49,9 @@
             <Setter Property="BorderThickness" Value="5"/>
             <Setter Property="BorderBrush" Value="Black"/>
             <Setter Property="CornerRadius" Value="10"/>
-            <Setter Property="Margin" Value="10" />
-            
+            <Setter Property="Margin" Value="5" />
+            <Setter Property="Background" Value="White" />
+
         </Style>
     </Application.Resources>
 </Application>

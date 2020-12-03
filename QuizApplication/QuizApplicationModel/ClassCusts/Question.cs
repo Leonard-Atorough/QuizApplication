@@ -4,11 +4,11 @@ using System.Text;
 
 namespace QuizApplicationModel
 {
-    public partial class Student
+    public partial class Question
     {
         public override string ToString()
         {
-            return $"{StudentName}";
+            return $"{Question1}";
         }
     }
 }
