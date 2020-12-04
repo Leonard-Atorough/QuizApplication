@@ -89,8 +89,12 @@ namespace QuizApplicationGUI.Pages.TeacherPages
 
         private void QuizBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            _crudManager.SetSelectedQuiz(QuizBox.SelectedItem);
-            ListQuizQuestions(name, _crudManager.SelectedQuiz.QuizName);
+            if (_crudManager.SelectedQuiz == null)
+            {
+                _crudManager.SetSelectedQuiz(QuizBox.Items[0]);
+            }
+                _crudManager.SetSelectedQuiz(QuizBox.SelectedItem);
+                ListQuizQuestions(name, _crudManager.SelectedQuiz.QuizName);
         }
         private void AllQuestionsBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
@@ -131,7 +135,16 @@ namespace QuizApplicationGUI.Pages.TeacherPages
 
         private void Delete_Button_Click(object sender, RoutedEventArgs e)
         {
+            try
+            {
+                _crudManager.DeleteQuiz(_crudManager.SelectedQuiz.QuizName, name);
+                ListQuizzes(name);
+            }
+            catch (Exception ex)
+            {
 
+                MessageBox.Show(ex.Message);
+            }
         }
         private void Create_Button_Click(object sender, RoutedEventArgs e)
         {

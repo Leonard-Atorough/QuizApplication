@@ -374,5 +374,31 @@ namespace QuizApplicationBusinessLayer
 
             }
         }
+        public void DeleteQuiz(string quizName, string name)
+        {
+            using (var db = new QuizBucketContext())
+            {
+                if (quizName != null)
+                {
+                    var Questions =
+                        from quiz in db.Quizzes
+                        join question in db.Questions on quiz.QuizId equals question.QuizId
+                        where quiz.QuizName == quizName
+                        select question;
+
+                    foreach (var item in Questions)
+                    {
+                        RemoveQuestionsFromQuiz(item.Question1);
+                    }
+                    var removeQuiz = db.Quizzes.Where(q => q.QuizName == quizName).FirstOrDefault();
+                    db.Quizzes.Remove(removeQuiz);
+                    db.SaveChanges();
+                }
+                else
+                {
+                    throw new Exception("Please select a quiz to delete");
+                }
+            }
+        }
     }
 }
