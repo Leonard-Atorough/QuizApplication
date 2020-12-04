@@ -13,8 +13,10 @@ namespace QuizApplicationModel
         }
 
         public int QuizId { get; set; }
+        public int? TeacherId { get; set; }
         public string QuizName { get; set; }
 
+        public virtual Teacher Teacher { get; set; }
         public virtual ICollection<Question> Questions { get; set; }
     }
 }

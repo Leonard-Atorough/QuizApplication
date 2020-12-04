@@ -10,7 +10,6 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-//using System.Windows.Forms;
 using QuizApplicationBusinessLayer;
 using QuizApplicationModel;
 
@@ -22,19 +21,19 @@ namespace QuizApplicationGUI.Pages
     public partial class TeacherMain : Page
     {
         CRUDManager _crudManager = new CRUDManager();
-        string username;
+        string name;
 
         public TeacherMain()
         {
             InitializeComponent();
             ListAllStudents();
-            
+
         }
 
-        public TeacherMain(string userFromLogin):this()
+        public TeacherMain(string userFromLogin) : this()
         {
-            username = userFromLogin;
-            ListAssignedStudents(username);
+            name = userFromLogin;
+            ListAssignedStudents(name);
         }
 
         private void ListAllStudents()
@@ -48,18 +47,12 @@ namespace QuizApplicationGUI.Pages
         }
 
 
-        private void Student_Button_Click(object sender, RoutedEventArgs e)
-        {
-            this.NavigationService.Navigate(this);
-        }
-
-
         private void Remove_Student_Click(object sender, RoutedEventArgs e)
         {
             if (AssignedStudentsBox.SelectedItem != null)
             {
-                _crudManager.RemoveStudentFromList(AssignedStudentsBox.SelectedItem.ToString(), username);
-                ListAssignedStudents(username);
+                _crudManager.RemoveStudentFromList(AssignedStudentsBox.SelectedItem.ToString(), name);
+                ListAssignedStudents(name);
             }
             else
             {
@@ -73,8 +66,8 @@ namespace QuizApplicationGUI.Pages
             {
                 if (AllStudentsBox.SelectedItem != null && !AssignedStudentsBox.Items.Contains(AllStudentsBox.SelectedItem))
                 {
-                    _crudManager.AddStudentToList(AllStudentsBox.SelectedItem.ToString(), username);
-                    ListAssignedStudents(username);
+                    _crudManager.AddStudentToList(AllStudentsBox.SelectedItem.ToString(), name);
+                    ListAssignedStudents(name);
                 }
                 else
                 {
@@ -86,7 +79,7 @@ namespace QuizApplicationGUI.Pages
 
                 MessageBox.Show(ex.Message);
             }
-            
+
         }
 
         private void StudentSearchBox_TextChanged(object sender, TextChangedEventArgs e)
@@ -101,16 +94,34 @@ namespace QuizApplicationGUI.Pages
             }
         }
 
-        private void Questions_Button_Click(object sender, RoutedEventArgs e)
+        private void AssignedStudentsBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            TeacherPages.QuestionPage questionPage = new TeacherPages.QuestionPage(username);
-            this.NavigationService.Navigate(questionPage);
+
         }
 
-        //private void AssignedStudentsBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        //{
+        private void Navigation_Button_Click(object sender, RoutedEventArgs e)
+        {
+            Button button = sender as Button;
+            var operation = button.Content.ToString();
 
-        //}
+            switch (operation)
+            {
+                case "Questions":
+                    TeacherPages.QuestionPage questionPage = new TeacherPages.QuestionPage(name);
+                    this.NavigationService.Navigate(questionPage);
+                    break;
+                case "Quizzes":
+                    TeacherPages.QuizPage quizPage = new TeacherPages.QuizPage(name);
+                    this.NavigationService.Navigate(quizPage);
+                    break;
+                case "Exit":
+                    TeacherLogin teacherLogin = new TeacherLogin();
+                    this.NavigationService.Navigate(teacherLogin);
+                    break;
+                default:
+                    break;
+            }
 
+        }
     }
 }

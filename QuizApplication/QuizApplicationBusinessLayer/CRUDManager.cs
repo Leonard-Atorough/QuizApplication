@@ -11,7 +11,7 @@ namespace QuizApplicationBusinessLayer
     {
         static void Main(string[] args)
         {
-            
+
         }
 
         // SELECT ITEMS
@@ -19,12 +19,17 @@ namespace QuizApplicationBusinessLayer
         public Question SelectedQuestion { get; set; }
         public Quiz SelectedQuiz { get; set; }
 
+        public void SetSelectedQuiz(object selectedQuiz)
+        {
+            SelectedQuiz = (Quiz)selectedQuiz;
+        }
+
         public void SetSelectedStudent(object selectedStudent)
         {
             SelectedStudent = (Student)selectedStudent;
         }
 
-        public void DisplaySelectedQuestion(object selectedQuestion)
+        public void SetSelectedQuestion(object selectedQuestion)
         {
             SelectedQuestion = (Question)selectedQuestion;
         }
@@ -69,16 +74,37 @@ namespace QuizApplicationBusinessLayer
                     join question in db.Questions on teacher.TeacherId equals question.TeacherId
                     where teacher.TeacherName == username
                     select question;
-
+                
                 return questions.ToList();
             }
         }
 
-        public List<Quiz> ListAllQuizzes()
+        public List<Quiz> ListAllQuizzes(string username)
         {
             using (var db = new QuizBucketContext())
             {
-                return db.Quizzes.ToList();
+                var quizSelect =
+                    from teacher in db.Teachers
+                    join quiz in db.Quizzes on teacher.TeacherId equals quiz.TeacherId
+                    where teacher.TeacherName == username
+                    select quiz;
+
+                return quizSelect.ToList();
+            }
+        }
+
+        public List<Question> ListAllQuestionsInQuiz(string username, string quizName)
+        {
+            using (var db = new QuizBucketContext())
+            {
+                var questions =
+                    from teacher in db.Teachers
+                    join quiz in db.Quizzes on teacher.TeacherId equals quiz.TeacherId
+                    join question in db.Questions on quiz.QuizId equals question.QuizId
+                    where teacher.TeacherName == username && quiz.QuizName == quizName
+                    select question;
+
+                return questions.ToList();
             }
         }
 
@@ -107,7 +133,7 @@ namespace QuizApplicationBusinessLayer
                     else
                     {
                         throw new ArgumentException("You have not inputted a password and/or email");
-                    }    
+                    }
                 }
                 else
                 {
@@ -148,17 +174,25 @@ namespace QuizApplicationBusinessLayer
             }
         }
 
-        public void CreateQuiz(string quizName)
+        public void CreateQuiz(string quizName, string name)
         {
             using (var db = new QuizBucketContext())
             {
-                var newQuiz = new Quiz
+                if (quizName != null)
                 {
-                    QuizName = quizName
-                };
-
-                db.Quizzes.Add(newQuiz);
-                db.SaveChanges();
+                    var newQuiz = new Quiz
+                    {
+                        QuizName = quizName
+                    };
+                    var quizCreator = db.Teachers.Where(t => t.TeacherName == name).FirstOrDefault();
+                    quizCreator.Quizzes.Add(newQuiz);
+                    db.Quizzes.Add(newQuiz);
+                    db.SaveChanges();
+                }
+                else
+                {
+                    throw new Exception("Quiz must have a name");
+                }
             }
         }
 
@@ -196,7 +230,7 @@ namespace QuizApplicationBusinessLayer
                     from teacher in db.Teachers
                     where teacher.TeacherName == teacherName
                     select teacher;
-                
+
                 int studentId = 0;
                 int teacherId = 0;
 
@@ -225,7 +259,7 @@ namespace QuizApplicationBusinessLayer
                 {
                     throw new ArgumentException("Cannot duplicated student!");
                 }
-                
+
             }
         }
 
@@ -248,7 +282,7 @@ namespace QuizApplicationBusinessLayer
             }
         }
 
-        public List<Student> SearchForStudentsInList (string userName)
+        public List<Student> SearchForStudentsInList(string userName)
         {
             using (var db = new QuizBucketContext())
             {
@@ -261,16 +295,16 @@ namespace QuizApplicationBusinessLayer
             }
         }
 
-        //UPDATE FUNCTIONS
-        //public void UpdateSelectedQuestions(string question, string newQuestion)
-        //{
-        //    using (var db = new QuizBucketContext())
-        //    {
-        //        SelectedQuestion = db.Questions.Where()
-        //    }
-        //}
-
-        //DELETE FUNCTIONS
+        //UPDATE AND DELETE QUESTIONS
+        public void UpdateSelectedQuestion(string question, string newQuestion)
+        {
+            using (var db = new QuizBucketContext())
+            {
+                SelectedQuestion = db.Questions.Where(q => q.Question1 == question).FirstOrDefault();
+                SelectedQuestion.Question1 = newQuestion;
+                db.SaveChanges();
+            }
+        }
         public void DeleteQuestion(string question, string name)
         {
             using (var db = new QuizBucketContext())
@@ -279,6 +313,65 @@ namespace QuizApplicationBusinessLayer
 
                 db.Questions.Remove(selectedQuestion);
                 db.SaveChanges();
+            }
+        }
+
+        //QUIZ PAGE FUNCTIONS
+        public List<Quiz> SearchForQuizInList(string quizName)
+        {
+            using (var db = new QuizBucketContext())
+            {
+                var searchedQuiz =
+                    from quiz in db.Quizzes
+                    where quiz.QuizName.Contains(quizName)
+                    select quiz;
+
+                return searchedQuiz.ToList();
+            }
+        }
+        public void AddQuestionToQuiz(string quizName, string questionText)
+        {
+            using (var db = new QuizBucketContext())
+            {
+                if (quizName != null && questionText != null)
+                {
+                    var selectedQuiz = db.Quizzes.Where(q => q.QuizName == quizName).FirstOrDefault();
+                    var selectedQuestion = db.Questions.Where(q => q.Question1 == questionText).FirstOrDefault();
+
+                    selectedQuiz.Questions.Add(selectedQuestion);
+                    selectedQuestion.QuizId = SelectedQuiz.QuizId;
+                    db.SaveChanges();
+
+                }
+                else
+                {
+                    throw new Exception("Please select a valid question and a quiz");
+                }
+                
+            }
+        }
+        public void RemoveQuestionsFromQuiz(string questionText)
+        {
+            using (var db = new QuizBucketContext())
+            {
+                if (questionText != null)
+                {
+
+                    var selectedQuestion =
+                        (from question in db.Questions
+                        join quiz in db.Quizzes on question.QuizId equals quiz.QuizId
+                        where question.Question1 == questionText
+                        select question).FirstOrDefault();
+
+                    selectedQuestion.QuizId = null;
+                    db.SaveChanges();
+
+                }
+                else
+                {
+                    throw new Exception("Please select a question");
+                }
+
             }
         }
     }

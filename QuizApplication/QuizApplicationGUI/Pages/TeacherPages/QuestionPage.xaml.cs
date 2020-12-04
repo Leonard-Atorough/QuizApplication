@@ -26,7 +26,7 @@ namespace QuizApplicationGUI.Pages.TeacherPages
             InitializeComponent();
         }
 
-        public QuestionPage(string userFromLogin):this()
+        public QuestionPage(string userFromLogin) : this()
         {
             name = userFromLogin;
             ListQuestions(name);
@@ -85,10 +85,11 @@ namespace QuizApplicationGUI.Pages.TeacherPages
                 _crudManager.CreateQuestion(QuestionBox.Text, name);
                 ListQuestions(name);
             }
-            //else if (UpdateQuestion.IsChecked == true && QuestionBox.Text.Length > 0)
-            //{
-
-            //}
+            else if (UpdateQuestion.IsChecked == true && QuestionBox.Text.Length > 0)
+            {
+                _crudManager.UpdateSelectedQuestion(QuestionsListBox.SelectedItem.ToString(), QuestionBox.Text);
+                ListQuestions(name);
+            }
         }
 
         private void DisplaySelectedQuestion()
@@ -101,7 +102,7 @@ namespace QuizApplicationGUI.Pages.TeacherPages
             QuestionBox.IsManipulationEnabled = true;
             if (QuestionsListBox.SelectedItem != null)
             {
-                _crudManager.DisplaySelectedQuestion(QuestionsListBox.SelectedItem);
+                _crudManager.SetSelectedQuestion(QuestionsListBox.SelectedItem);
                 DisplaySelectedQuestion();
             }
         }
@@ -115,5 +116,31 @@ namespace QuizApplicationGUI.Pages.TeacherPages
                 QuestionBox.Text = "";
             }
         }
+
+        private void Navigation_Button_Click(object sender, RoutedEventArgs e)
+        {
+            Button button = sender as Button;
+            var operation = button.Content.ToString();
+
+            switch (operation)
+            {
+                case "Students":
+                    TeacherMain teacherMain = new TeacherMain(name);
+                    this.NavigationService.Navigate(teacherMain);
+                    break;
+                case "Quizzes":
+                    QuizPage quizPage = new QuizPage(name);
+                    this.NavigationService.Navigate(quizPage);
+                    break;
+                case "Exit":
+                    TeacherLogin teacherLogin = new TeacherLogin();
+                    this.NavigationService.Navigate(teacherLogin);
+                    break;
+                default:
+                    break;
+            }
+
+        }
+
     }
 }

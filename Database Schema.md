@@ -1,7 +1,7 @@
 ```mysql
 DROP TABLE StudentTeacher
 DROP TABLE StudentQuiz
-DROP TABLE StdentAnswers
+DROP TABLE StudentAnswers
 DROP TABLE Quiz
 DROP TABLE Questions
 DROP TABLE Students
@@ -29,6 +29,7 @@ CREATE TABLE StudentTeacher (
 
 CREATE TABLE Quiz (
     QuizId int NOT NULL IDENTITY(1,1) PRIMARY KEY,
+    TeacherId int FOREIGN KEY REFERENCES Teachers(TeacherId),
     QuizName varchar(25)
 )
 
