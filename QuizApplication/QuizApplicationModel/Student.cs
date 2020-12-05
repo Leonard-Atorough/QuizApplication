@@ -9,10 +9,8 @@ namespace QuizApplicationModel
     {
         public Student()
         {
-            StudentAnswerQuestions = new HashSet<StudentAnswer>();
-            StudentAnswerStudents = new HashSet<StudentAnswer>();
-            StudentQuizQuizzes = new HashSet<StudentQuiz>();
-            StudentQuizStudents = new HashSet<StudentQuiz>();
+            StudentAnswers = new HashSet<StudentAnswer>();
+            StudentQuizzes = new HashSet<StudentQuiz>();
             StudentTeachers = new HashSet<StudentTeacher>();
         }
 
@@ -21,10 +19,8 @@ namespace QuizApplicationModel
         public string StudentPassword { get; set; }
         public string StudentEmail { get; set; }
 
-        public virtual ICollection<StudentAnswer> StudentAnswerQuestions { get; set; }
-        public virtual ICollection<StudentAnswer> StudentAnswerStudents { get; set; }
-        public virtual ICollection<StudentQuiz> StudentQuizQuizzes { get; set; }
-        public virtual ICollection<StudentQuiz> StudentQuizStudents { get; set; }
+        public virtual ICollection<StudentAnswer> StudentAnswers { get; set; }
+        public virtual ICollection<StudentQuiz> StudentQuizzes { get; set; }
         public virtual ICollection<StudentTeacher> StudentTeachers { get; set; }
     }
 }

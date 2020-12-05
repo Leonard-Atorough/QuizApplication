@@ -10,6 +10,7 @@ namespace QuizApplicationModel
         public Quiz()
         {
             Questions = new HashSet<Question>();
+            StudentQuizzes = new HashSet<StudentQuiz>();
         }
 
         public int QuizId { get; set; }
@@ -18,5 +19,6 @@ namespace QuizApplicationModel
 
         public virtual Teacher Teacher { get; set; }
         public virtual ICollection<Question> Questions { get; set; }
+        public virtual ICollection<StudentQuiz> StudentQuizzes { get; set; }
     }
 }

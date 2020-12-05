@@ -46,12 +46,12 @@ namespace QuizApplicationModel
                 entity.HasOne(d => d.Quiz)
                     .WithMany(p => p.Questions)
                     .HasForeignKey(d => d.QuizId)
-                    .HasConstraintName("FK__Questions__QuizI__6754599E");
+                    .HasConstraintName("FK__Questions__QuizI__2645B050");
 
                 entity.HasOne(d => d.Teacher)
                     .WithMany(p => p.Questions)
                     .HasForeignKey(d => d.TeacherId)
-                    .HasConstraintName("FK__Questions__Teach__68487DD7");
+                    .HasConstraintName("FK__Questions__Teach__2739D489");
             });
 
             modelBuilder.Entity<Quiz>(entity =>
@@ -65,7 +65,7 @@ namespace QuizApplicationModel
                 entity.HasOne(d => d.Teacher)
                     .WithMany(p => p.Quizzes)
                     .HasForeignKey(d => d.TeacherId)
-                    .HasConstraintName("FK__Quiz__TeacherId__6477ECF3");
+                    .HasConstraintName("FK__Quiz__TeacherId__236943A5");
             });
 
             modelBuilder.Entity<Student>(entity =>
@@ -92,16 +92,16 @@ namespace QuizApplicationModel
                     .IsUnicode(false);
 
                 entity.HasOne(d => d.Question)
-                    .WithMany(p => p.StudentAnswerQuestions)
+                    .WithMany(p => p.StudentAnswers)
                     .HasForeignKey(d => d.QuestionId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__StudentAn__Quest__6FE99F9F");
+                    .HasConstraintName("FK__StudentAn__Quest__2EDAF651");
 
                 entity.HasOne(d => d.Student)
-                    .WithMany(p => p.StudentAnswerStudents)
+                    .WithMany(p => p.StudentAnswers)
                     .HasForeignKey(d => d.StudentId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__StudentAn__Stude__6EF57B66");
+                    .HasConstraintName("FK__StudentAn__Stude__2DE6D218");
             });
 
             modelBuilder.Entity<StudentQuiz>(entity =>
@@ -111,16 +111,16 @@ namespace QuizApplicationModel
                 entity.ToTable("StudentQuiz");
 
                 entity.HasOne(d => d.Quiz)
-                    .WithMany(p => p.StudentQuizQuizzes)
+                    .WithMany(p => p.StudentQuizzes)
                     .HasForeignKey(d => d.QuizId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__StudentQu__QuizI__6C190EBB");
+                    .HasConstraintName("FK__StudentQu__QuizI__2B0A656D");
 
                 entity.HasOne(d => d.Student)
-                    .WithMany(p => p.StudentQuizStudents)
+                    .WithMany(p => p.StudentQuizzes)
                     .HasForeignKey(d => d.StudentId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__StudentQu__Stude__6B24EA82");
+                    .HasConstraintName("FK__StudentQu__Stude__2A164134");
             });
 
             modelBuilder.Entity<StudentTeacher>(entity =>
@@ -133,13 +133,13 @@ namespace QuizApplicationModel
                     .WithMany(p => p.StudentTeachers)
                     .HasForeignKey(d => d.StudentId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__StudentTe__Stude__60A75C0F");
+                    .HasConstraintName("FK__StudentTe__Stude__1F98B2C1");
 
                 entity.HasOne(d => d.Teacher)
                     .WithMany(p => p.StudentTeachers)
                     .HasForeignKey(d => d.TeacherId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__StudentTe__Teach__619B8048");
+                    .HasConstraintName("FK__StudentTe__Teach__208CD6FA");
             });
 
             modelBuilder.Entity<Teacher>(entity =>

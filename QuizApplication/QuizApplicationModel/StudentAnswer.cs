@@ -11,7 +11,7 @@ namespace QuizApplicationModel
         public int QuestionId { get; set; }
         public string Answer { get; set; }
 
-        public virtual Student Question { get; set; }
+        public virtual Question Question { get; set; }
         public virtual Student Student { get; set; }
     }
 }

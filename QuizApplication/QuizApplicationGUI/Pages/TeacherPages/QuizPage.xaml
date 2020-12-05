@@ -74,7 +74,7 @@
                     <ListBox x:Name="QuizBox" Background="{x:Null}" BorderBrush="{x:Null}" FontFamily="Tahoma" FontSize="16" SelectionChanged="QuizBox_SelectionChanged"/>
                 </Border>
                 <Border Style="{StaticResource BorderStyle3}" Height="40">
-                    <TextBox Name="QuizSearchBox" Text="" Style="{StaticResource TextBoxStyle}" Height="30" TextChanged="QuizSearchBox_TextChanged" FontSize="22"/>
+                    <TextBox Name="QuizSearchBox" Text="" Style="{StaticResource TextBoxStyle}" Height="30" TextChanged="QuizSearchBox_TextChanged" FontSize="22" />
                 </Border>
             </StackPanel>
 

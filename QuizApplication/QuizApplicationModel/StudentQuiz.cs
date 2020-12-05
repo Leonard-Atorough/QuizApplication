@@ -11,7 +11,7 @@ namespace QuizApplicationModel
         public int QuizId { get; set; }
         public int? Score { get; set; }
 
-        public virtual Student Quiz { get; set; }
+        public virtual Quiz Quiz { get; set; }
         public virtual Student Student { get; set; }
     }
 }
