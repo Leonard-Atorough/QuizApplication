@@ -1,56 +1,85 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="NameAndType">
   <Class Name="QuizApplicationModel.Teacher">
-    <Position X="7.25" Y="4.25" Width="3.25" />
+    <Position X="1.75" Y="5.25" Width="2" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAEAAACAAAIAAAAgAEAAAAAgAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAgAAAAAAEAAACAAAIAAAAgAEAAAAAgAAAAA=</HashCode>
       <FileName>Teacher.cs</FileName>
     </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Property Name="StudentTeachers" />
+      <Property Name="Questions" />
+      <Property Name="Quizzes" />
+    </ShowAsCollectionAssociation>
   </Class>
   <Class Name="QuizApplicationModel.StudentTeacher">
-    <Position X="5.25" Y="2.75" Width="1.5" />
+    <Position X="4.75" Y="6.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAEAAAAAQAAAAAAAAAAACAAAAAAAAAAAAAAAAAACAAA=</HashCode>
       <FileName>StudentTeacher.cs</FileName>
     </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Student" />
+      <Property Name="Teacher" />
+    </ShowAsAssociation>
   </Class>
   <Class Name="QuizApplicationModel.Student">
-    <Position X="7.25" Y="0.5" Width="3.75" />
+    <Position X="7.5" Y="3.25" Width="2" />
     <TypeIdentifier>
-      <HashCode>ACAABAIAAAAAAAAAAAAAAAIAAAACAgCgAAAAAAACAAA=</HashCode>
-      <FileName>Student.cs</FileName>
+      <HashCode>ACAABAAAAAAAAAAUAAAAAAAAAAAAAgCAAAAAAAACAAQ=</HashCode>
+      <FileName>ClassCusts\Student.cs</FileName>
     </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Property Name="StudentTeachers" />
+      <Property Name="StudentQuizzes" />
+      <Property Name="StudentAnswers" />
+    </ShowAsCollectionAssociation>
   </Class>
   <Class Name="QuizApplicationModel.Question">
-    <Position X="3.25" Y="4.75" Width="1.75" />
+    <Position X="0.75" Y="1.75" Width="1.75" />
     <TypeIdentifier>
-      <HashCode>AAEAAAAAAAAAAAAAAAAACAAAIAAAAAAEAAAAAAQAAAA=</HashCode>
-      <FileName>Question.cs</FileName>
+      <HashCode>AAEAAAAAAAAAAAAUAAAACAAAIAAAAAAEAAAAAAQAAAA=</HashCode>
+      <FileName>ClassCusts\Question.cs</FileName>
     </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Quiz" />
+      <Property Name="Teacher" />
+    </ShowAsAssociation>
+    <ShowAsCollectionAssociation>
+      <Property Name="StudentAnswers" />
+    </ShowAsCollectionAssociation>
   </Class>
   <Class Name="QuizApplicationModel.Quiz">
-    <Position X="1" Y="5" Width="1.5" />
+    <Position X="5.75" Y="0.5" Width="1.5" />
     <Compartments>
       <Compartment Name="Properties" Collapsed="true" />
     </Compartments>
     <TypeIdentifier>
-      <HashCode>AABAAAAAAAAAAAAAAAAAAAAAIAAAAAAEAAAAAAAAAAA=</HashCode>
-      <FileName>Quiz.cs</FileName>
+      <HashCode>AAFAAAAAAAAAAAAEAAAACAAAIAAAAAAEAAAAAAAAAAQ=</HashCode>
+      <FileName>ClassCusts\Quiz.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="QuizApplicationModel.StudentQuiz">
-    <Position X="3.25" Y="1.25" Width="1.5" />
+    <Position X="11" Y="3" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAQAAAAAgAAAAAAAAAIAAAAAAAAAAAAAQCAAA=</HashCode>
       <FileName>StudentQuiz.cs</FileName>
     </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Quiz" />
+      <Property Name="Student" />
+    </ShowAsAssociation>
   </Class>
   <Class Name="QuizApplicationModel.StudentAnswer">
-    <Position X="1" Y="0.5" Width="1.75" />
+    <Position X="4.25" Y="3" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAEAAAAAgQCAAA=</HashCode>
       <FileName>StudentAnswer.cs</FileName>
     </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Student" />
+      <Property Name="Question" />
+    </ShowAsAssociation>
   </Class>
   <Font Name="Segoe UI" Size="9" />
 </ClassDiagram>

@@ -42,14 +42,14 @@ CREATE TABLE Questions (
 
 CREATE TABLE StudentQuiz (
     StudentId int FOREIGN KEY REFERENCES Students(StudentId),
-    QuizId int FOREIGN KEY REFERENCES Students(StudentId),
+    QuizId int FOREIGN KEY REFERENCES Quiz(QuizId),
     Score int,
     CONSTRAINT PK_StudentQuiz PRIMARY KEY (StudentId, QuizId)
 );
 
 CREATE TABLE StudentAnswers (
     StudentId int FOREIGN KEY REFERENCES Students(StudentId),
-    QuestionId int FOREIGN KEY REFERENCES Students(StudentId),
+    QuestionId int FOREIGN KEY REFERENCES Questions(QuestionId),
     Answer varchar(200),
     CONSTRAINT PK_StudentAnswers PRIMARY KEY (StudentId, QuestionId)
 );

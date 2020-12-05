@@ -23,19 +23,48 @@
             <ColumnDefinition/>
             <ColumnDefinition Width="20"/>
             <ColumnDefinition Width="1.25*"/>
+            <ColumnDefinition Width="20"/>
         </Grid.ColumnDefinitions>
 
+        <TextBlock x:Name="UserBlock" Text="" TextWrapping="Wrap" FontWeight="SemiBold" FontSize="36" Margin="10,0,10,0"/>
+
         <StackPanel Grid.Row="1">
-            <ComboBox Name="QuizList" Background="White" FontSize="14">
-                <ComboBox.ItemTemplate>
-                    <DataTemplate>
-                        <StackPanel Orientation="Horizontal">
-                            <Rectangle Fill="{Binding Name}"/>
-                            <TextBlock Text="{Binding Name}"/>
-                        </StackPanel>
-                    </DataTemplate>
-                </ComboBox.ItemTemplate>
-            </ComboBox>
+            <Border Margin="20,5,20,0" BorderThickness="5" BorderBrush="Black" CornerRadius="20,20,0,0">
+                <TextBlock  Text="Choose a Quiz:" Style="{StaticResource BoxStyle}"/>
+            </Border>
+            <Border Margin="5,5,5,2" BorderThickness="5" BorderBrush="Black">
+                <ComboBox Name="QuizList" Background="{x:Null}" FontSize="14" IsEditable="True" SelectionChanged="QuizList_SelectionChanged"/>
+            </Border>
+
+            <Border Margin="7" BorderThickness="2" BorderBrush="Black"/>
+
+            <Border Margin="20,5,20,5" BorderThickness="5" BorderBrush="Black" CornerRadius="20,20,0,0">
+                <TextBlock  Text="Quiz questions" Style="{StaticResource BoxStyle}"/>
+            </Border>
+            <Border Grid.Column="2" Grid.Row="1" CornerRadius="10" BorderThickness="5" BorderBrush="Black">
+                <ListBox x:Name="QuizQuestionsBox" BorderBrush="{x:Null}" Background="{x:Null}" FontFamily="Tahoma" FontSize="16" MinHeight="80" MaxHeight="170" SelectionChanged="QuizQuestionsBox_SelectionChanged"/>
+            </Border>
+        </StackPanel>
+
+        <StackPanel Grid.Row="1" Grid.Column="2">
+            <Border Margin="40,5,40,0" BorderThickness="5" BorderBrush="Black" CornerRadius="20,20,0,0">
+                <TextBlock  Text="Question" Style="{StaticResource BoxStyle}"/>
+            </Border>
+            <Border Grid.Column="2" Grid.Row="1" Style="{StaticResource BorderStyle3}">
+                <TextBlock x:Name="QuestionDisplayBox" MinHeight="100"  FontSize="24" Margin="5,0,5,5"/>
+            </Border>
+
+            <Border Margin="7" BorderThickness="2" BorderBrush="Black"/>
+            
+            <TextBlock Text="Input answer here:" TextWrapping="Wrap" FontWeight="SemiBold" FontSize="22" Margin="10,0,10,0"/>
+            <TextBox x:Name="AnswerBox" Background="{x:Null}" BorderBrush="Black" BorderThickness="3" IsEnabled="False" Visibility="Visible" FontSize="16" MaxHeight="120" TextWrapping="Wrap" FontFamily="Tahoma" Margin="5" Padding="5"/>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <Border Name="SaveBorder" Style="{StaticResource BorderStyle3}">
+                    <Button x:Name="SaveAnswer" Click="SaveAnswer_Click" Style="{StaticResource ButtonStyle}">
+                        <TextBlock Text="Save Answer" TextWrapping="Wrap" FontWeight="SemiBold" FontSize="24"/>
+                    </Button>
+                </Border>
+            </StackPanel>
         </StackPanel>
         
         <Grid Grid.Row="2" Grid.Column="0">
