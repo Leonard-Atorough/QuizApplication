@@ -114,6 +114,17 @@ namespace QuizApplicationGUI.Pages
                 case "Exit":
                     TeacherLogin teacherLogin = new TeacherLogin();
                     this.NavigationService.Navigate(teacherLogin);
+                    //while (NavigationService.CanGoBack)
+                    //{
+                    //    try
+                    //    {
+                    //        NavigationService.RemoveBackEntry();
+                    //    }
+                    //    catch (Exception ex)
+                    //    {
+                    //        break;
+                    //    }
+                    //}
                     break;
                 default:
                     break;
