@@ -40,7 +40,6 @@ namespace QuizApplicationGUI.Pages
         {
             AllStudentsBox.ItemsSource = _crudManager.ListAllStudents();
         }
-
         private void ListAssignedStudents(string username)
         {
             AssignedStudentsBox.ItemsSource = _crudManager.ListAssignedStudents(username);
@@ -59,7 +58,6 @@ namespace QuizApplicationGUI.Pages
                 MessageBox.Show("Select a valid student.");
             }
         }
-
         private void Add_Student_Click(object sender, RoutedEventArgs e)
         {
             try
@@ -81,7 +79,6 @@ namespace QuizApplicationGUI.Pages
             }
 
         }
-
         private void StudentSearchBox_TextChanged(object sender, TextChangedEventArgs e)
         {
             if (!string.IsNullOrEmpty(StudentSearchBox.Text))

@@ -92,6 +92,21 @@ namespace QuizApplicationBusinessLayer
                 return quizSelect.ToList();
             }
         }
+        public List<Quiz> ListStudentQuizzes(string username)
+        {
+            using (var db = new QuizBucketContext())
+            {
+                var quizSelect =
+                    from student in db.Students
+                    join studentQuiz in db.StudentQuizzes on student.StudentId equals studentQuiz.StudentId
+                    join quiz in db.Quizzes on studentQuiz.QuizId equals quiz.QuizId
+                    where student.StudentName == username
+                    select quiz;
+                return quizSelect.ToList();
+            }
+        }
+
+
 
         public List<Question> ListAllQuestionsInQuiz(string username, string quizName)
         {
@@ -101,7 +116,7 @@ namespace QuizApplicationBusinessLayer
                     from teacher in db.Teachers
                     join quiz in db.Quizzes on teacher.TeacherId equals quiz.TeacherId
                     join question in db.Questions on quiz.QuizId equals question.QuizId
-                    where teacher.TeacherName == username && quiz.QuizName == quizName
+                    where teacher.TeacherName == username && quiz.QuizName == quizName 
                     select question;
 
                 return questions.ToList();
@@ -146,15 +161,30 @@ namespace QuizApplicationBusinessLayer
         {
             using (var db = new QuizBucketContext())
             {
-                var newAccount = new Student
-                {
-                    StudentName = name,
-                    StudentPassword = password,
-                    StudentEmail = email
-                };
+                var accountExists = db.Teachers.Where(c => c.TeacherName == name).SingleOrDefault();
 
-                db.Students.Add(newAccount);
-                db.SaveChanges();
+                if (!db.Teachers.Contains(accountExists))
+                {
+                    if (password.Length > 0 && email.Length > 0)
+                    {
+                        var newAccount = new Student
+                        {
+                            StudentName = name,
+                            StudentPassword = password,
+                            StudentEmail = email
+                        };
+                        db.Students.Add(newAccount);
+                        db.SaveChanges();
+                    }
+                    else
+                    {
+                        throw new ArgumentException("You have not inputted a password and/or email");
+                    }
+                }
+                else
+                {
+                    throw new ArgumentException("Account already exists!");
+                }
             }
         }
 
@@ -208,6 +238,24 @@ namespace QuizApplicationBusinessLayer
                     (from teacher in db.Teachers
                      where teacher.TeacherName == userName && teacher.TeacherPassword == password
                      select teacher).ToList();
+                }
+                else
+                {
+                    throw new ArgumentException("Invalid account credentials!");
+                }
+            }
+        }
+        public void StudentLogin(string userName, string password)
+        {
+            using (var db = new QuizBucketContext())
+            {
+                var accountExists = db.Students.Where(c => c.StudentName == userName && c.StudentPassword == password).SingleOrDefault();
+                if (db.Students.Contains(accountExists))
+                {
+                    var account =
+                    (from student in db.Students
+                     where student.StudentName == userName && student.StudentPassword == password
+                     select student).ToList();
                 }
                 else
                 {
@@ -317,6 +365,32 @@ namespace QuizApplicationBusinessLayer
         }
 
         //QUIZ PAGE FUNCTIONS
+
+        public void PublishQuiz(string quizName, string name)
+        {
+            using (var db = new QuizBucketContext())
+            {
+                var selectedQuiz = db.Quizzes.Where(q => q.QuizName == quizName).FirstOrDefault();
+                var assignedStudents =
+                        from teacher in db.Teachers
+                        join studentTeacher in db.StudentTeachers on teacher.TeacherId equals studentTeacher.TeacherId
+                        join student in db.Students on studentTeacher.StudentId equals student.StudentId
+                        where teacher.TeacherName == name
+                        select student.StudentId;
+
+                foreach (var item in assignedStudents)
+                {
+                    var AssignQuiz = new StudentQuiz
+                    {
+                        QuizId = selectedQuiz.QuizId,
+                        StudentId = item
+
+                    };
+                    db.StudentQuizzes.Add(AssignQuiz);
+                }
+                db.SaveChanges();
+            }
+        }
         public List<Quiz> SearchForQuizInList(string quizName)
         {
             using (var db = new QuizBucketContext())

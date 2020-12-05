@@ -94,6 +94,11 @@
                     <TextBlock Text="Delete Selected Quiz" TextWrapping="Wrap" Style="{StaticResource BoxStyle}" FontWeight="SemiBold" FontSize="13"/>
                 </Button>
             </Border>
+            <Border Grid.Column="1" Grid.Row="4" Grid.ColumnSpan="2" Style="{StaticResource BorderStyle3}" Background="Green">
+                <Button Style="{StaticResource ButtonStyle}" Click="Publish_Button_Click" Background="{x:Null}">
+                    <TextBlock Text="Publish Selected Quiz" TextWrapping="Wrap" Style="{StaticResource BoxStyle}" FontWeight="SemiBold" FontSize="13"/>
+                </Button>
+            </Border>
             
 
         </Grid>
@@ -118,7 +123,7 @@
             </Grid.RowDefinitions>
 
             <Border Style="{StaticResource BorderStyle2}" Margin="2" CornerRadius="10" Grid.Column="0" Grid.ColumnSpan="3">
-                <TextBox x:Name="QuizCreateBox" Background="{x:Null}" TextWrapping="Wrap" BorderBrush="{x:Null}"/>
+                <TextBox x:Name="QuizCreateBox" Background="{x:Null}" TextWrapping="Wrap" BorderBrush="{x:Null}" FontFamily="Tahoma" FontSize="18"/>
             </Border>
             <Border Style="{StaticResource BorderStyle3}" Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="2" Margin="10,0,10,5">
                 <Button Style="{StaticResource ButtonStyle}" Click="Create_Button_Click" Background="{x:Null}">

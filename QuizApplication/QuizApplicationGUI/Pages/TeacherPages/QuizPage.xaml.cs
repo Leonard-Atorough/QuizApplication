@@ -89,12 +89,21 @@ namespace QuizApplicationGUI.Pages.TeacherPages
 
         private void QuizBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (_crudManager.SelectedQuiz == null)
+            if (QuizBox.SelectedItem == null && QuizBox.Items.Count > 0)
             {
                 _crudManager.SetSelectedQuiz(QuizBox.Items[0]);
+                ListQuizQuestions(name, _crudManager.SelectedQuiz.QuizName);
             }
+            else if (QuizBox.SelectedItem == null)
+            {
+                _crudManager.SetSelectedQuiz(null);
+            }
+            else
+            {
                 _crudManager.SetSelectedQuiz(QuizBox.SelectedItem);
                 ListQuizQuestions(name, _crudManager.SelectedQuiz.QuizName);
+            }
+                
         }
         private void AllQuestionsBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
@@ -159,6 +168,17 @@ namespace QuizApplicationGUI.Pages.TeacherPages
                 MessageBox.Show(ex.Message);
             }
         }
+        private void Publish_Button_Click(object sender, RoutedEventArgs e)
+        {
+            //try
+            //{
+                _crudManager.PublishQuiz(QuizBox.SelectedItem.ToString(), name);
+            //}
+            //catch (Exception ex)
+            //{
 
+            //    MessageBox.Show(ex.Message);
+            //}
+        }
     }
 }
