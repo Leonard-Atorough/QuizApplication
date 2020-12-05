@@ -52,9 +52,7 @@
                 <Border Grid.Column="4" Grid.Row="1" Style="{StaticResource BorderStyle3}">
                     <Button  Content="Quizzes" FontSize="24" Style="{StaticResource ButtonStyle}" Click="Navigation_Button_Click" />
                 </Border>
-                <Border Grid.Column="4" Grid.Row="1" Style="{StaticResource BorderStyle3}">
-                    <Button  Content="Results" FontSize="24" Style="{StaticResource ButtonStyle}" Click="Navigation_Button_Click" />
-                </Border>
+
                 <Border Grid.Column="4" Grid.Row="1" Style="{StaticResource BorderStyle3}">
                     <Button  Content="Exit" FontSize="24" Style="{StaticResource ButtonStyle}" Click="Navigation_Button_Click" />
                 </Border>
