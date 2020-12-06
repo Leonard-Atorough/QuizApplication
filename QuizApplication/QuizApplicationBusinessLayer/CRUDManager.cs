@@ -373,6 +373,13 @@ namespace QuizApplicationBusinessLayer
             {
                 var selectedQuestion = db.Questions.Where(q => q.Question1 == question).FirstOrDefault();
 
+                var associatedAnswers = db.StudentAnswers.Where(a => a.QuestionId == selectedQuestion.QuestionId).ToList();
+
+                foreach (var item in associatedAnswers)
+                {
+                    db.StudentAnswers.Remove(item);
+                }
+                selectedQuestion.QuizId = null;
                 db.Questions.Remove(selectedQuestion);
                 db.SaveChanges();
             }

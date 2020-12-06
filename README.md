@@ -20,7 +20,7 @@ The application will be defined as done when the minimum viable product, as laid
 
 ### Class Diagrams
 
-
+![](https://raw.githubusercontent.com/Leonard-Atorough/QuizApplication/Dev/Kanban%20pictures/Class%20Diagram.PNG)
 
 ---
 
@@ -44,9 +44,9 @@ By the end of this sprint I aimed to have a three tier application structured wi
 
 #### Sprint Goals
 
-- [x] Complete user story 0.1
-- [x] Complete user story 0.2
-- [x] Complete user story 0.3
+- [x] Complete user story 0.1 - Create and scaffold database
+- [x] Complete user story 0.2  - Create business layer
+- [x] Complete user story 0.3 - create basic GUI
 - [x] Complete sprint documentation
 - [x] Complete sprint retrospective
 - [x] Update README
@@ -109,8 +109,6 @@ The aim of this spring was to finish implementing the functions of the teachers 
 
 ![](https://raw.githubusercontent.com/Leonard-Atorough/QuizApplication/Dev/Kanban%20pictures/SprintThree%20start.PNG)
 
-
-
 #### Sprint Goals
 
 - [x] Complete user story 2.2.1 - Student list search bar
@@ -131,3 +129,48 @@ The goals of the sprint were met. One blocker was in implementing the search bar
 #### Sprint Retrospective
 
 As with the previous sprint, the lack of unit testing is concerning but manual testing has proven sufficient for catching fault or incomplete logic in the program. As previously mention, unit tests will be implemented to test the reaches of the program and explore edge cases, even those already covered.
+
+![](https://raw.githubusercontent.com/Leonard-Atorough/QuizApplication/Dev/Kanban%20pictures/SprintThree%20end.PNG)
+
+---
+
+
+
+### SPRINT 4 - 04/12/2020 to 05/12/2020
+
+---
+
+The aim of the fourth sprint was the completion of the teacher functionality as well as developing the login events and functions for the student side of the application. The teacher side of the application would have the ability to create new quizzes, delete existing quizzes and update the questions within those quizzes at will. The students would be able to login or signup and see the quizzes their teachers have made.
+
+![](https://raw.githubusercontent.com/Leonard-Atorough/QuizApplication/Dev/Kanban%20pictures/SprintFour%20start.PNG)
+
+
+
+#### Sprint Goals
+
+- [x] Complete user story 3.1.3 - Student list search bar
+- [x] Complete user story 3.2 - Add student from general list to class list
+- [x] Complete user story  3.2.1 - Remove student from class list
+- [x] Complete user story 4.1 - See list of created questions
+- [x] Complete user story 4.2 - Add questions from question list
+- [x] Complete user story 6.1 - Remove questions from question list
+- [x] Complete sprint documentation
+- [x] Complete sprint retrospective
+- [x] Update README
+
+#### Sprint Review
+
+The sprint was originally planned as a one day sprint but ended up covering two days due to multiple interruptions. The goals of the sprint were met and then exceed. The application, as currently planned, was completed by the end of the sprint with the remaining work being tests to ensure the robustness of application functionality.
+
+#### Sprint Retrospective
+
+The sprint was not planned as efficiently and many distractions and interruptions caused the sprint to extend over two days. However, a lot of tasks were accomplished and the application benefited from the extended sprint. More tasks than planned were completed and many bugs and crashes were fixed the the process. The main takeaway from this sprint was that many application functions needed expanded manual testing. Intentionally breaking the application in order to reveal errors proved useful as a means of testing.
+
+---
+
+
+
+### Sprint 5 - 06/12/2020
+
+---
+
