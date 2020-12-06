@@ -174,3 +174,23 @@ The sprint was not planned as efficiently and many distractions and interruption
 
 ---
 
+The fifth sprint aimed at achieving beyond the MVP and completing the application to a functioning and usable state. This sprint also focused on addressing encountered exception situations in order to make the application more robust and less prone to unceremonious crashes.
+
+![](https://raw.githubusercontent.com/Leonard-Atorough/QuizApplication/Dev/Kanban%20pictures/SprintFive%20start.PNG)
+
+- [x] Complete user story 7.1 - Improve GUI
+- [x] Complete user story 7.2 - Add application robustness
+- [x] Complete user story  7.2.1 - Delete functions will not cause crashes
+- [x] Complete sprint documentation
+- [x] Complete sprint retrospective
+- [x] Update README
+
+#### Sprint Review
+
+This sprint was shorter than the other sprint. While the sprint goals were achieved, the planning was more lax than in previous sprints. This directly contributed to a vagueness of the user stories associated. The work completed was also more disjointed and lacked as much clarity as with previous sprints. Despite this, the product was manually tested and successfully worked, the GUI was improved overall and the smoothness of the menus was updated.
+
+#### Sprint Retrospective
+
+As a penultimate sprint, the sprint was useful in ensuring the application was in a state where it could be shown off. Being held on a Sunday, the sprint was cut short by other life events which are unavoidable. The sprint also felt less rigorous than previous sprints. Two key lessons learned would be more unit testing and better estimation of worked required to deliver successful product.
+
+![](https://raw.githubusercontent.com/Leonard-Atorough/QuizApplication/Dev/Kanban%20pictures/SprintFive%20end.PNG)
