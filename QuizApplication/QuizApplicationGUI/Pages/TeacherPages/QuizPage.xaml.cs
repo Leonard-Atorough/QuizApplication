@@ -172,6 +172,7 @@ namespace QuizApplicationGUI.Pages.TeacherPages
             try
             {
                 _crudManager.PublishQuiz(QuizBox.SelectedItem.ToString(), name);
+                MessageBox.Show("Quiz Published!");
             }
             catch (Exception ex)
             {
