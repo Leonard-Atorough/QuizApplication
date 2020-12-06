@@ -99,6 +99,7 @@ namespace QuizApplicationGUI.Pages
         private void Navigation_Button_Click(object sender, RoutedEventArgs e)
         {
             Button button = sender as Button;
+            
             var operation = button.Content.ToString();
 
             switch (operation)
