@@ -52,9 +52,15 @@
             </StackPanel>
         </Border>
 
-        <Border Grid.Column="4" Grid.Row="1" CornerRadius="10" BorderThickness="5" BorderBrush="Black">
-            <ListBox x:Name="QuestionsListBox" Background="{x:Null}" BorderBrush="{x:Null}" FontFamily="Tahoma" FontSize="16" SelectionChanged="QuestionsBox_SelectionChanged" />
-        </Border>
+        <StackPanel Grid.Row="1" Grid.Column="4">
+            <Border Margin="5,5,5,2" BorderThickness="5" BorderBrush="Black" CornerRadius="20,20,0,0">
+                <TextBlock  Text="Question Bank" Style="{StaticResource BoxStyle}"/>
+            </Border>
+            <Border Grid.Column="4" Grid.Row="1" CornerRadius="10" BorderThickness="5" BorderBrush="Black" Height="250">
+                <ListBox x:Name="QuestionsListBox" Background="{x:Null}" BorderBrush="{x:Null}" FontFamily="Tahoma" FontSize="16" SelectionChanged="QuestionsBox_SelectionChanged" />
+            </Border>
+        </StackPanel>
+        
 
         <Grid Grid.Row="1" Grid.Column="2">
             <Grid.RowDefinitions>

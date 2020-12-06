@@ -112,8 +112,8 @@ namespace QuizApplicationGUI.Pages
                     this.NavigationService.Navigate(quizPage);
                     break;
                 case "Exit":
-                    TeacherLogin teacherLogin = new TeacherLogin();
-                    this.NavigationService.Navigate(teacherLogin);
+                    HomePage homePage = new HomePage();
+                    this.NavigationService.Navigate(homePage);
                     //while (NavigationService.CanGoBack)
                     //{
                     //    try

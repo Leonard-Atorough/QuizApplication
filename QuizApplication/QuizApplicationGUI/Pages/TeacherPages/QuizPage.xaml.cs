@@ -64,9 +64,8 @@ namespace QuizApplicationGUI.Pages.TeacherPages
                     this.NavigationService.Navigate(questionPage);
                     break;
                 case "Exit":
-                    TeacherLogin teacherLogin = new TeacherLogin();
-                    
-                    this.NavigationService.Navigate(teacherLogin);
+                    HomePage homePage = new HomePage();
+                    this.NavigationService.Navigate(homePage);
                     break;
                 default:
                     break;
@@ -154,7 +153,7 @@ namespace QuizApplicationGUI.Pages.TeacherPages
 
                 MessageBox.Show(ex.Message);
             }
-        }
+}
         private void Create_Button_Click(object sender, RoutedEventArgs e)
         {
             try
@@ -170,15 +169,15 @@ namespace QuizApplicationGUI.Pages.TeacherPages
         }
         private void Publish_Button_Click(object sender, RoutedEventArgs e)
         {
-            //try
-            //{
+            try
+            {
                 _crudManager.PublishQuiz(QuizBox.SelectedItem.ToString(), name);
-            //}
-            //catch (Exception ex)
-            //{
+            }
+            catch (Exception ex)
+            {
 
-            //    MessageBox.Show(ex.Message);
-            //}
+                MessageBox.Show(ex.Message);
+            }
         }
     }
 }

@@ -133,8 +133,8 @@ namespace QuizApplicationGUI.Pages.TeacherPages
                     this.NavigationService.Navigate(quizPage);
                     break;
                 case "Exit":
-                    TeacherLogin teacherLogin = new TeacherLogin();
-                    this.NavigationService.Navigate(teacherLogin);
+                    HomePage homePage = new HomePage();
+                    this.NavigationService.Navigate(homePage);
                     break;
                 default:
                     break;

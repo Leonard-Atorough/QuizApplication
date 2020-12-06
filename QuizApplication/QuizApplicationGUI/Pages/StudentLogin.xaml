@@ -31,7 +31,11 @@
             <RowDefinition/>
         </Grid.RowDefinitions>
 
-
+        <Border Grid.ColumnSpan="3" Grid.Column="1" Margin="5" Grid.Row="0" BorderThickness="5" BorderBrush="Black" CornerRadius="10">
+            <Viewbox StretchDirection="DownOnly" Stretch="Uniform" Margin="2">
+                <TextBlock Text="Teacher Login/Registration" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" FontSize="36" FontWeight="DemiBold" FontFamily="Tahoma"/>
+            </Viewbox>
+        </Border>
 
         <Border Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Margin="20,10,10,10" BorderThickness="5" BorderBrush="Black" CornerRadius="20,20,0,0">
             <TextBlock  Text="LOGIN" TextAlignment="Center" FontSize="24" Background="{x:Null}"/>

@@ -68,6 +68,7 @@
                 <Border Style="{StaticResource BorderStyle2}" Height="150" CornerRadius="10" Margin="2">
                     <ListBox x:Name="QuizQuestionsBox" Background="{x:Null}" BorderBrush="{x:Null}" FontFamily="Tahoma" FontSize="16" SelectionChanged="QuizQuestionsBox_SelectionChanged"/>
                 </Border>
+                
                 <Border Style="{StaticResource BorderStyle2}" Height="90" CornerRadius="10" Margin="2">
                     <ListBox x:Name="QuizBox" Background="{x:Null}" BorderBrush="{x:Null}" FontFamily="Tahoma" FontSize="16" SelectionChanged="QuizBox_SelectionChanged"/>
                 </Border>

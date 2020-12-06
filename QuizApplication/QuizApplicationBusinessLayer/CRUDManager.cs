@@ -391,25 +391,33 @@ namespace QuizApplicationBusinessLayer
         {
             using (var db = new QuizBucketContext())
             {
-                var selectedQuiz = db.Quizzes.Where(q => q.QuizName == quizName).FirstOrDefault();
-                var assignedStudents =
-                        from teacher in db.Teachers
-                        join studentTeacher in db.StudentTeachers on teacher.TeacherId equals studentTeacher.TeacherId
-                        join student in db.Students on studentTeacher.StudentId equals student.StudentId
-                        where teacher.TeacherName == name
-                        select student.StudentId;
-
-                foreach (var item in assignedStudents)
+                if (quizName != null)
                 {
-                    var AssignQuiz = new StudentQuiz
-                    {
-                        QuizId = selectedQuiz.QuizId,
-                        StudentId = item
+                    var selectedQuiz = db.Quizzes.Where(q => q.QuizName == quizName).FirstOrDefault();
+                    var assignedStudents =
+                            from teacher in db.Teachers
+                            join studentTeacher in db.StudentTeachers on teacher.TeacherId equals studentTeacher.TeacherId
+                            join student in db.Students on studentTeacher.StudentId equals student.StudentId
+                            where teacher.TeacherName == name
+                            select student.StudentId;
 
-                    };
-                    db.StudentQuizzes.Add(AssignQuiz);
+                    foreach (var item in assignedStudents)
+                    {
+                        var AssignQuiz = new StudentQuiz
+                        {
+                            QuizId = selectedQuiz.QuizId,
+                            StudentId = item
+
+                        };
+                        db.StudentQuizzes.Add(AssignQuiz);
+                    }
+                    db.SaveChanges();
                 }
-                db.SaveChanges();
+                else if (quizName == null)
+                {
+                    throw new Exception("Please select a quiz to publish.");
+                }
+                
             }
         }
         public List<Quiz> SearchForQuizInList(string quizName)
@@ -475,12 +483,33 @@ namespace QuizApplicationBusinessLayer
             {
                 if (quizName != null)
                 {
+                    var clearAnswers =
+                        from quiz in db.Quizzes
+                        join question in db.Questions on quiz.QuizId equals question.QuizId
+                        join answers in db.StudentAnswers on question.QuestionId equals answers.QuestionId
+                        where quiz.QuizName == quizName
+                        select answers;
+
+                    var unassignQuiz =
+                        from quiz in db.Quizzes
+                        join studentQuiz in db.StudentQuizzes on quiz.QuizId equals studentQuiz.QuizId
+                        where quiz.QuizName == quizName
+                        select studentQuiz;
+
                     var Questions =
                         from quiz in db.Quizzes
                         join question in db.Questions on quiz.QuizId equals question.QuizId
                         where quiz.QuizName == quizName
                         select question;
 
+                    foreach (var item in clearAnswers)
+                    {
+                        db.StudentAnswers.Remove(item);
+                    }
+                    foreach (var item in unassignQuiz)
+                    {
+                        db.StudentQuizzes.Remove(item);
+                    }
                     foreach (var item in Questions)
                     {
                         RemoveQuestionsFromQuiz(item.Question1);
