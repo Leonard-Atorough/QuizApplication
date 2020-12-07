@@ -24,7 +24,29 @@ The application will be defined as done when the minimum viable product, as laid
 
 ---
 
+### WPF PAGES
 
+#### Home page
+
+![](https://raw.githubusercontent.com/Leonard-Atorough/QuizApplication/main/Kanban%20pictures/QuizBucket%20main%20page.PNG)
+
+#### Teacher login page
+
+![](https://raw.githubusercontent.com/Leonard-Atorough/QuizApplication/main/Kanban%20pictures/TeacherLogin%20page.PNG)
+
+#### Teacher student management page
+
+![](https://raw.githubusercontent.com/Leonard-Atorough/QuizApplication/main/Kanban%20pictures/TeacherMain%20page.PNG)
+
+
+
+#### Teacher questions page
+
+![](https://raw.githubusercontent.com/Leonard-Atorough/QuizApplication/main/Kanban%20pictures/TeacherQuestions%20page.PNG)
+
+#### Student page
+
+![](![img](https://raw.githubusercontent.com/Leonard-Atorough/QuizApplication/main/Kanban%20pictures/StudentMain%20page.PNG)
 
 ## Sprint Documentation
 
@@ -194,3 +216,25 @@ This sprint was shorter than the other sprint. While the sprint goals were achie
 As a penultimate sprint, the sprint was useful in ensuring the application was in a state where it could be shown off. Being held on a Sunday, the sprint was cut short by other life events which are unavoidable. The sprint also felt less rigorous than previous sprints. Two key lessons learned would be more unit testing and better estimation of worked required to deliver successful product.
 
 ![](https://raw.githubusercontent.com/Leonard-Atorough/QuizApplication/Dev/Kanban%20pictures/SprintFive%20end.PNG)
+
+---
+
+### Sprint 6 - 07/12/2020 - final sprint
+
+![]()
+
+The goal of the sprint was to round off and present the finished prototype to an audience, as a group, explaining its features and the work still to be done to complete the application. Further debugging and minor fixes would also be carried out, as well as the inclusion of a couple of complimentary unit tests.
+
+- [x] Complete user story 7.1 - Improve GUI
+- [x] Complete documentation
+- [x] Push to main branch
+
+#### Sprint Review
+
+The tasks were successfully completed. A few unit tests were added to the programme and the whole project was pushed to the main branch for grading.
+
+#### Sprint Retrospective
+
+Based on feedback from the presentation and from our trainer, the sprint was a successful roundoff to the project. Personally, I believe that this project went well and that all sprints imparted a useful lesson which will be applied to future projects.
+
+![]()
