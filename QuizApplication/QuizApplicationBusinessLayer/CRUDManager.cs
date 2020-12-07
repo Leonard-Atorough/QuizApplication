@@ -233,7 +233,7 @@ namespace QuizApplicationBusinessLayer
                     db.Quizzes.Add(newQuiz);
                     db.SaveChanges();
                 }
-                else
+                else if (quizName == null)
                 {
                     throw new Exception("Quiz must have a name");
                 }
@@ -386,7 +386,6 @@ namespace QuizApplicationBusinessLayer
         }
 
         //QUIZ PAGE FUNCTIONS
-
         public void PublishQuiz(string quizName, string name)
         {
             using (var db = new QuizBucketContext())
