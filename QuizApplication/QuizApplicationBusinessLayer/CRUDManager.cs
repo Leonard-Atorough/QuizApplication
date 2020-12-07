@@ -408,7 +408,10 @@ namespace QuizApplicationBusinessLayer
                             StudentId = item
 
                         };
-                        db.StudentQuizzes.Add(AssignQuiz);
+                        if(!db.StudentQuizzes.Contains(AssignQuiz))
+                        {
+                            db.StudentQuizzes.Add(AssignQuiz);
+                        }
                     }
                     db.SaveChanges();
                 }
