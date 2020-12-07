@@ -221,7 +221,7 @@ As a penultimate sprint, the sprint was useful in ensuring the application was i
 
 ### Sprint 6 - 07/12/2020 - final sprint
 
-![]()
+![](https://raw.githubusercontent.com/Leonard-Atorough/QuizApplication/Dev/Kanban%20pictures/SprintSix%20start.PNG)
 
 The goal of the sprint was to round off and present the finished prototype to an audience, as a group, explaining its features and the work still to be done to complete the application. Further debugging and minor fixes would also be carried out, as well as the inclusion of a couple of complimentary unit tests.
 
@@ -237,4 +237,4 @@ The tasks were successfully completed. A few unit tests were added to the progra
 
 Based on feedback from the presentation and from our trainer, the sprint was a successful roundoff to the project. Personally, I believe that this project went well and that all sprints imparted a useful lesson which will be applied to future projects.
 
-![]()
+![](https://raw.githubusercontent.com/Leonard-Atorough/QuizApplication/Dev/Kanban%20pictures/SprintSix%20end.PNG)
