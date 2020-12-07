@@ -169,16 +169,16 @@ namespace QuizApplicationGUI.Pages.TeacherPages
         }
         private void Publish_Button_Click(object sender, RoutedEventArgs e)
         {
-            try
+            if (QuizBox.SelectedItem.ToString() != null)
             {
                 _crudManager.PublishQuiz(QuizBox.SelectedItem.ToString(), name);
                 MessageBox.Show("Quiz Published!");
             }
-            catch (Exception ex)
+            else
             {
-
-                MessageBox.Show(ex.Message);
+                MessageBox.Show("Please select a quiz to publish");
             }
+
         }
     }
 }

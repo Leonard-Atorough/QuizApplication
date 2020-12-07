@@ -408,17 +408,14 @@ namespace QuizApplicationBusinessLayer
                             StudentId = item
 
                         };
-                        if(!db.StudentQuizzes.Contains(AssignQuiz))
-                        {
-                            db.StudentQuizzes.Add(AssignQuiz);
-                        }
+                        db.StudentQuizzes.Add(AssignQuiz);
                     }
                     db.SaveChanges();
                 }
-                else if (quizName == null)
-                {
-                    throw new Exception("Please select a quiz to publish.");
-                }
+                //else if (quizName == null)
+                //{
+                //    throw new Exception("Please select a quiz to publish.");
+                //}
                 
             }
         }
