@@ -55,11 +55,29 @@ namespace QuizApplicationCrudTests
             using (var db = new QuizBucketContext())
 
             {
-                var numberOfTeachersBefore = db.Teachers.ToList().Count();
+                var numberOfTeachersBefore = db.Teachers.Count();
                 _crudManager.CreateTeacherAccount("Derek Brown", "Nish Mandal", "Sparta Global");
-                var numberOfTeachersAfter = db.Teachers.ToList().Count();
+                var numberOfTeachersAfter = db.Teachers.Count();
 
                 Assert.AreEqual(numberOfTeachersBefore + 1, numberOfTeachersAfter);
+            }
+        }
+        [Test]
+        public void TeachersDetailsAreCorrect()
+        {
+            using (var db = new QuizBucketContext())
+            {
+                var createTeacher = new Teacher
+                {
+                    TeacherName = "Derek Brown",
+                    TeacherPassword = "digbyB1",
+                    TeacherEmail = "dbrown@gmail.com"
+                };
+                db.Teachers.Add(createTeacher);
+                db.SaveChanges();
+                Assert.AreEqual("Derek Brown", db.Teachers.Where(t => t.TeacherName == "Derek Brown").Select(t => t.TeacherName));
+                Assert.AreEqual("digbyB1", db.Teachers.Where(t => t.TeacherName == "Derek Brown").Select(t => t.TeacherPassword));
+                Assert.AreEqual("dbrown@gmail.com", db.Teachers.Where(t => t.TeacherName == "Derek Brown").Select(t => t.TeacherEmail));
             }
         }
 
@@ -81,7 +99,5 @@ namespace QuizApplicationCrudTests
                 Assert.DoesNotThrow(() => _crudManager.TeacherLogin("Derek Brown", "digbyB1"));
             }
         }
-
-
     }
 }
