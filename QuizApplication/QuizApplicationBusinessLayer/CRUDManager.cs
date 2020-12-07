@@ -148,20 +148,27 @@ namespace QuizApplicationBusinessLayer
 
                 if (!db.Teachers.Contains(accountExists))
                 {
-                    if (password.Length > 0 && email.Length > 0)
+                    if (name.Length > 0)
                     {
-                        var newAccount = new Teacher
+                        if (password.Length > 0 && email.Length > 0)
                         {
-                            TeacherName = name.Trim(),
-                            TeacherPassword = password.Trim(),
-                            TeacherEmail = email.Trim()
-                        };
-                        db.Teachers.Add(newAccount);
-                        db.SaveChanges();
+                            var newAccount = new Teacher
+                            {
+                                TeacherName = name.Trim(),
+                                TeacherPassword = password.Trim(),
+                                TeacherEmail = email.Trim()
+                            };
+                            db.Teachers.Add(newAccount);
+                            db.SaveChanges();
+                        }
+                        else
+                        {
+                            throw new ArgumentException("You have not inputted a password and/or email");
+                        }
                     }
                     else
                     {
-                        throw new ArgumentException("You have not inputted a password and/or email");
+                        throw new ArgumentException("Please input a username!");
                     }
                 }
                 else
@@ -179,20 +186,27 @@ namespace QuizApplicationBusinessLayer
 
                 if (!db.Teachers.Contains(accountExists))
                 {
-                    if (password.Length > 0 && email.Length > 0)
+                    if (name.Length > 0)
                     {
-                        var newAccount = new Student
+                        if (password.Length > 0 && email.Length > 0)
                         {
-                            StudentName = name,
-                            StudentPassword = password,
-                            StudentEmail = email
-                        };
-                        db.Students.Add(newAccount);
-                        db.SaveChanges();
+                            var newAccount = new Student
+                            {
+                                StudentName = name,
+                                StudentPassword = password,
+                                StudentEmail = email
+                            };
+                            db.Students.Add(newAccount);
+                            db.SaveChanges();
+                        }
+                        else
+                        {
+                            throw new ArgumentException("You have not inputted a password and/or email!");
+                        }
                     }
                     else
                     {
-                        throw new ArgumentException("You have not inputted a password and/or email");
+                        throw new ArgumentException("Please input a username!");
                     }
                 }
                 else

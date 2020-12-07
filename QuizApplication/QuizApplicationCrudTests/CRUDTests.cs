@@ -50,7 +50,7 @@ namespace QuizApplicationCrudTests
         }
 
         [Test]
-        public void AccountIsCreated()
+        public void AccountIsCreated_NumberOfAccountsIncreaseByOne()
         {
             using (var db = new QuizBucketContext())
 
@@ -63,7 +63,7 @@ namespace QuizApplicationCrudTests
             }
         }
         [Test]
-        public void TeachersDetailsAreCorrect()
+        public void WhenQueriedForUserDetails_TheDatabaseReturnsExpectedDetails()
         {
             using (var db = new QuizBucketContext())
             {
@@ -75,14 +75,16 @@ namespace QuizApplicationCrudTests
                 };
                 db.Teachers.Add(createTeacher);
                 db.SaveChanges();
-                Assert.AreEqual("Derek Brown", db.Teachers.Where(t => t.TeacherName == "Derek Brown").Select(t => t.TeacherName));
-                Assert.AreEqual("digbyB1", db.Teachers.Where(t => t.TeacherName == "Derek Brown").Select(t => t.TeacherPassword));
-                Assert.AreEqual("dbrown@gmail.com", db.Teachers.Where(t => t.TeacherName == "Derek Brown").Select(t => t.TeacherEmail));
+
+                var findUser = db.Teachers.Where(t => t.TeacherName == "Derek Brown").FirstOrDefault();
+                Assert.AreEqual("Derek Brown", findUser.TeacherName);
+                Assert.AreEqual("digbyB1", findUser.TeacherPassword);
+                Assert.AreEqual("dbrown@gmail.com", findUser.TeacherEmail);
             }
         }
 
         [Test]
-        public void UserExists()
+        public void ASuccessfulLoginWillNotThrowAnException()
         {
             using (var db = new QuizBucketContext())
             {
@@ -97,6 +99,32 @@ namespace QuizApplicationCrudTests
  
 
                 Assert.DoesNotThrow(() => _crudManager.TeacherLogin("Derek Brown", "digbyB1"));
+            }
+        }
+        [Test]
+        public void AnIncorrectLoginWillThrowAnException()
+        {
+            using (var db = new QuizBucketContext())
+            {
+                var createTeacher = new Teacher
+                {
+                    TeacherName = "Derek Brown",
+                    TeacherPassword = "digbyB1",
+                    TeacherEmail = "dbrown@gmail.com"
+                };
+                db.Teachers.Add(createTeacher);
+                db.SaveChanges();
+
+                string message = "";
+                try
+                {
+                    _crudManager.TeacherLogin("Derek Brown", "digbyB2");
+                }
+                catch (Exception ex)
+                {
+                    message = ex.Message;
+                }
+                Assert.AreEqual("Invalid account credentials!", message);
             }
         }
     }
